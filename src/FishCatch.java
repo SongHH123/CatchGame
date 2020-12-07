@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class FishCatch extends JFrame{
+	private Vector<GameObject> objs = new Vector<GameObject>();
 	
 	public FishCatch() {
 		setTitle("생선 먹기 게임!");
@@ -50,8 +52,18 @@ public class FishCatch extends JFrame{
 				}
 			});
 			
-			Trash t = new Trash(100, 200);
-			add(t);
+			for(int i = 0; i<5; i++) {
+				 try {
+					Thread.sleep(1000);
+					objs.add(new Trash(150, 150));
+					add(objs.get(i));
+				} catch (InterruptedException e) {
+					return;
+				}
+			}
+			 //Fish f = new Fish(100, 200);
+			 //add(f);
+			 
 		}
 		
 		

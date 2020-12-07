@@ -1,15 +1,16 @@
+import java.awt.Image;
+import java.util.Vector;
 
-public class FishFromRight extends GameObject {
+import javax.swing.ImageIcon;
+
+public class FishFromRight extends Fish {
 
 	public FishFromRight(int x, int y) {
 		super(x, y);
-		// TODO Auto-generated constructor stub
 	}
-
+	
 	@Override
 	void draw(int x, int y) {
-		// TODO Auto-generated method stub
-		
+		int value = 1;
 	}
-
 }

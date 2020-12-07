@@ -16,15 +16,19 @@ public class Trash extends GameObject {
 		ImageIcon apple = new ImageIcon("image/trash_A.png");
 		ImageIcon bone = new ImageIcon("image/trash_F.png");
 		
-		Image scaledAppleImage = apple.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-		Image scaledBoneImage = bone.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		Image scaledAppleImage = apple.getImage().getScaledInstance(75, 75, Image.SCALE_SMOOTH);
+		Image scaledBoneImage = bone.getImage().getScaledInstance(75, 75, Image.SCALE_SMOOTH);
 		
 		images.add(new ImageIcon(scaledAppleImage));
 		images.add(new ImageIcon(scaledBoneImage));
 		
 		int selectionIdx = (int)(Math.random()*2);
 		this.setIcon(images.get(selectionIdx));
-		setSize(50,50);
-		setLocation(x, y);
+		setSize(75, 75);
+		
+		int randomX = (int)(Math.random()*900);
+		int randomY = (int)(Math.random()*600);
+		setLocation(randomX, randomY);
+		
 	}
 }

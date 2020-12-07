@@ -1,4 +1,4 @@
 
-public class GameScore {
+public class GameScore extends FishCatch{
 
 }
