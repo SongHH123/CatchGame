@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class FishCatch extends JFrame{
 	private Vector<GameObject> objs = new Vector<GameObject>();
+	Vector<Trash> trashes = new Vector<Trash>(10);
 	
 	public FishCatch() {
 		setTitle("생선 먹기 게임!");
@@ -32,11 +33,44 @@ public class FishCatch extends JFrame{
 	class GamePanel extends JPanel {
 		private ImageIcon backgroundIcon;
 		int backgroundMode = 0;
+		Thread trashGenerator;
 		
 		public GamePanel() {
 			setLayout(null);
 			backgroundIcon = new ImageIcon(Background.LOADING);
 			customcursor();
+			
+			trashGenerator = new Thread(new Runnable() {
+				@Override
+				public void run() {
+					for(int i = 0; i<18; i++) {
+						try {
+							Thread.sleep(50);
+							trashes.add(new Trash(150, 150));
+							add(trashes.get(i));
+							repaint();
+						} catch (InterruptedException e) {
+							return;
+						}
+					}
+					
+					// Change the location of trashes.
+					while(true) {
+						try {
+							for(int i = 0; i < trashes.size(); i++) {
+								Trash t = trashes.get(i);
+								int x = (int)(Math.random()*10 -5);
+								int y = (int)(Math.random()*4 -2);
+								t.setLocation(t.getX() + x, t.getY() + y);
+							}
+							Thread.sleep(100);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+			});
 			
 			this.addMouseListener(new MouseAdapter() {
 				@Override
@@ -48,19 +82,14 @@ public class FishCatch extends JFrame{
 					}else if(backgroundMode == 2) {
 						backgroundIcon = new ImageIcon(Background.PLAYING);
 						repaint();
+						trashGenerator.start();
 					}
 				}
 			});
 			
-			for(int i = 0; i<5; i++) {
-				 try {
-					Thread.sleep(1000);
-					objs.add(new Trash(150, 150));
-					add(objs.get(i));
-				} catch (InterruptedException e) {
-					return;
-				}
-			}
+			Fish f = new FishFromLeft(100, 100);
+			add(f);
+			
 			 //Fish f = new Fish(100, 200);
 			 //add(f);
 			 

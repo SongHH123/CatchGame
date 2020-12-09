@@ -11,7 +11,15 @@ public class FishFromLeft extends Fish {
 	
 	@Override
 	void draw(int x, int y) {
-		int value = 1;
+		ImageIcon fishFR = new ImageIcon("image/fish2.png");
+		Image scaledfishFRImage = fishFR.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+		fishFR = new ImageIcon(scaledfishFRImage);
+		
+		this.setIcon(fishFR);
+		setSize(100, 100);
+		
+		int _y = (int)Math.random()*600;
+		setLocation(0, _y);
 	}
 
 }
