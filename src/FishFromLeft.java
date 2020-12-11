@@ -5,21 +5,19 @@ import javax.swing.ImageIcon;
 
 public class FishFromLeft extends Fish {
 
-	public FishFromLeft(int x, int y) {
-		super(x, y);
+	public FishFromLeft(int y) {
+		super(0, y);
 	}
 	
 	@Override
 	void draw(int x, int y) {
-		ImageIcon fishFR = new ImageIcon("image/fish2.png");
-		Image scaledfishFRImage = fishFR.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-		fishFR = new ImageIcon(scaledfishFRImage);
+		ImageIcon fishFromLeft = new ImageIcon("image/fish2.png");
+		Image scaledImage = fishFromLeft.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+		fishFromLeft = new ImageIcon(scaledImage);
 		
-		this.setIcon(fishFR);
+		this.setIcon(fishFromLeft);
 		setSize(100, 100);
 		
-		int _y = (int)Math.random()*600;
-		setLocation(0, _y);
+		setLocation(x, y);
 	}
-
 }
