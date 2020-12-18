@@ -5,8 +5,8 @@ import java.util.Vector;
 
 public class Trash extends GameObject {
 	
-	public Trash(int x, int y) {
-		super(x, y);
+	public Trash() {
+		super(0, 0);
 	}
 	
 	@Override
@@ -26,9 +26,9 @@ public class Trash extends GameObject {
 		this.setIcon(images.get(selectionIdx));
 		setSize(75, 75);
 		
-		int randomX = (int)(Math.random()*900);
-		int randomY = (int)(Math.random()*600);
-		setLocation(randomX, randomY);
+		x = (int)(Math.random()*900);
+		y = (int)(Math.random()*600);
+		setLocation(x, y);
 		
 	}
 }
